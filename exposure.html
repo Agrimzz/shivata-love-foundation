@@ -4,79 +4,413 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./animations.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Oooh+Baby&display=swap"
+      rel="stylesheet"
+    />
     <title>Exposure</title>
   </head>
-  <body>
-    <nav class="w-full p-3 fixed backdrop-blur-md top-0 z-50">
+  <body class="bg-brand-50">
+    <nav
+      id="navbar"
+      class="w-full py-3 fixed backdrop-blur-md top-0 z-40 transition-all duration-300 text-white/60"
+    >
       <div
         class="max-w-container mx-auto flex justify-between items-center px-4"
       >
-        <p class="text-sm font-bold">
+        <p class="text-sm font-bold text-white" id="logo">
           SHIVATA LOVE <br />
           FOUDNATION
         </p>
 
-        <div class="flex gap-2">
+        <div class="gap-2 hidden lg:flex">
           <a
             href="/"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Home
           </a>
           <a
             href="/about.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             About
           </a>
           <a
             href="/team.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Team
           </a>
           <a
             href="/perspective.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Perspective
           </a>
           <a
             href="/campaigns.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Campaigns
           </a>
           <a
             href="/beneficiaries.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Beneficiaries
           </a>
           <a
             href="/exposure.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200 text-white"
+            id="active"
           >
             Media Exposure
           </a>
         </div>
 
-        <div class="flex gap-2">
-          <a
-            href="#"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm"
-          >
+        <div class="gap-2 hidden lg:flex">
+          <a href="#footer" class="px-4 py-2 rounded-sm font-bold text-sm">
             Contact
           </a>
           <a
-            href="#"
-            class="px-4 py-2 text-white rounded-sm font-bold text-sm bg-brand-600 hover:bg-brand-700"
+            href="/donate.html"
+            class="px-4 py-2 rounded-sm font-bold text-sm bg-brand-600 hover:bg-brand-700 text-white"
           >
             Donate
           </a>
         </div>
+        <button
+          id="menu-toggle"
+          class="lg:hidden focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class=""
+          >
+            <path d="M4 12h16" />
+            <path d="M4 18h16" />
+            <path d="M4 6h16" />
+          </svg>
+        </button>
       </div>
     </nav>
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden fixed top-0 left-0 w-full h-full z-50 bg-black/50 lg:hidden"
+    >
+      <!-- Sidebar -->
+      <div
+        id="mobile-sidebar"
+        class="w-md h-full bg-white z-50 transform -translate-x-full transition-transform duration-300 ease-in-out"
+      >
+        <div class="p-4 flex flex-col gap-6 text-5xl font-semibold">
+          <div class="flex justify-between items-center">
+            <p class="text-base font-normal">Navigation</p>
+            <button id="menu-close" class="self-end text-black text-2xl">
+              ✕
+            </button>
+          </div>
+          <a href="/" class="hover:underline">Home</a>
+          <a href="/about.html" class="hover:underline">About</a>
+          <a href="/team.html" class="hover:underline">Team</a>
+          <a href="/perspective.html" class="hover:underline">Perspective</a>
+          <a href="/campaigns.html" class="hover:underline">Campaigns</a>
+          <a href="/beneficiaries.html" class="hover:underline"
+            >Beneficiaries</a
+          >
+          <a href="/exposure.html" class="hover:underline text-brand-600"
+            >Media Exposure</a
+          >
+        </div>
+      </div>
+
+      <!-- Transparent overlay -->
+      <div class="flex-1" id="overlay"></div>
+    </div>
+    <!-- Section 1: Header -->
+    <section class="bg-gradient-to-br from-[#E55454] to-[#7F2F2F] fade-up">
+      <div
+        class="max-w-container mx-auto pt-40 pb-16 lg:pt-40 lg:pb-40 px-4 relative"
+      >
+        <!-- Title -->
+        <h1 class="text-5xl lg:text-8xl font-semibold text-gray-100">
+          MEIDIA EXPOSURE
+        </h1>
+
+        <!-- Breadcrumb + Short Description -->
+        <div class="grid grid-cols-12 mt-4">
+          <div class="col-span-12 lg:col-start-6 lg:col-span-2">
+            <p class="text-sm text-gray-100">HOME - EXPOSURE</p>
+          </div>
+          <div class="col-span-12 lg:col-span-3">
+            <p class="text-sm text-gray-100 hidden lg:block">
+              Stories of resilience and success — moments where our mission
+              resonated across platforms, amplifying the voices of those we
+              empower.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="py-16 lg:py-24 fade-up">
+      <div class="max-w-container mx-auto px-4 space-y-4">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <h3 class="text-5xl lg:text-5xl font-semibold">
+            Video <br />Highlights
+          </h3>
+          <p
+            class="text-sm lg:text-3xl font-semibold text-brand-600 opacity-50 text-right hidden lg:block"
+          >
+            Stories of Change Captured on Film<br />Witness the journeys,
+            voices, and impact<br />through our video storytelling.
+          </p>
+          <p class="text-sm font-semibold text-brand-600 opacity-50 lg:hidden">
+            Stories of Change Captured on Film Witness the journeys, voices, and
+            impact through our video storytelling.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <!-- Hardcoded Videos -->
+          <iframe
+            src="https://www.youtube.com/embed/UG7X2qN3S7w?si=1omaiwgOk02LAXLf"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/Vvyc-suCXPU?si=TsFp5I7T1tDcP6Pk"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/7Ko4bpvBtaE?si=AbMyaztESAK00oy2"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/R0l1M2z0Pg0?si=rfBh9Ou668OhSXWK"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/97RIce7J-Zs?si=wBaMR7DvJKb_5lDN"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/7V4VySObAck?si=7qPuD1T5f0WCtY88"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/5xTq1buONJA?si=1qfvmK-aILpaGCym"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/yi0ZZs4FHcs?si=y0-psCFp-H5cNsZb"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/GEqrKWzdmbQ?si=Q2RzZYHCR9arTDaI"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/EfE7Nb-BJa4?si=bz8O4bxlFgfmyxcF"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/VmEJuHjvov0?si=FY0Alsi6goutbNgk"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/ephM8TwDAuo?si=ktiMWspCjSDF53JQ"
+            class="w-full h-80"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-16 lg:py-24 fade-up">
+      <div class="max-w-container mx-auto px-4 space-y-4">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <h3 class="text-5xl lg:text-5xl font-semibold">
+            News <br />Highlights
+          </h3>
+          <p
+            class="text-sm lg:text-3xl font-semibold text-brand-600 opacity-50 text-right hidden lg:block"
+          >
+            Sharing Our Impact with the World<br />Featured stories, and media
+            coverage<br />from national and global outlets.
+          </p>
+          <p class="text-sm font-semibold text-brand-600 opacity-50 lg:hidden">
+            Sharing Our Impact with the World Featured stories, and media
+            coverage from national and global outlets.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Hardcoded News Cards -->
+          <div
+            class="border border-gray-200 bg-white p-6 rounded flex flex-col gap-2"
+          >
+            <p class="text-sm text-red-600">Online Khabar</p>
+            <h3 class="text-2xl font-semibold leading-6">
+              Shivata-28: Kathmandu opens new painting exhibition aimed at
+              charity
+            </h3>
+            <p class="text-xs opacity-70 mt-2">
+              Kathmandu, April 24 Shivata Love Foundation organised an art
+              exhibition titled Shivata-28 that began on Saturday at MCube
+              Gallery, Patan. The exhibition is led by veteran artist Ragini
+              Upadhayay Grela, also the founder and president of the foundation.
+              In the opening ceremony, she said the organisation is working to
+              fulfil the dreams of “many Shivatas”....
+            </p>
+            <a
+              class="text-brand-600 text-xs mt-2 block"
+              href="https://english.onlinekhabar.com/shivata-28-art-exhibition-charity.html"
+              >https://english.onlinekhabar.com/shivata-28-art-exhibition-charity.html</a
+            >
+          </div>
+
+          <div
+            class="border border-gray-200 bg-white p-6 rounded flex flex-col gap-2"
+          >
+            <p class="text-sm text-red-600">My Republica</p>
+            <h3 class="text-2xl font-semibold leading-6">
+              Shivata Love Foundation Nepal continues its good work
+            </h3>
+            <p class="text-xs opacity-70 mt-2">
+              Shivata Love Foundation has recently donated rations to Pabitra
+              Samaj Sewa Nepal. Ragini Upadhayaya, Chairperson of the foundation
+              and former Vice-Chancellor of Nepal Academy of Fine Arts, visited
+              the organization located at Budanikantha and made the donation on
+              Tuesday.
+            </p>
+            <a
+              class="text-brand-600 text-xs mt-2 block"
+              href="https://www.myrepublica.nagariknetwork.com/news/shivata-love-foundation-nepal-continues-its-good-work"
+              >https://www.myrepublica.nagariknetwork.com/news/shivata-love-foundation-nepal-continues-its-good-work</a
+            >
+          </div>
+
+          <div
+            class="border border-gray-200 bg-white p-6 rounded flex flex-col gap-2"
+          >
+            <p class="text-sm text-red-600">Kathmandu Post</p>
+            <h3 class="text-2xl font-semibold leading-6">
+              Exhibition to support art students
+            </h3>
+            <p class="text-xs opacity-70 mt-2">
+              SLFN, is a non-profit organisation working in Belgium and Nepal
+              founded by former chancellor of Nepal Academy of Fine Arts and
+              eminent artist Ragini Upadhayay. It organises an exhibition every
+              year to raise funds for this cause, commemorating the life and
+              death of Upadhayay’s daughter, Shivata Upadhayay Grela.
+            </p>
+            <a
+              class="text-brand-600 text-xs mt-2 block"
+              href="https://kathmandupost.com/57/2023/04/25/exhibition-to-support-art-students"
+              >https://kathmandupost.com/57/2023/04/25/exhibition-to-support-art-students</a
+            >
+          </div>
+
+          <div
+            class="border border-gray-200 bg-white p-6 rounded flex flex-col gap-2"
+          >
+            <p class="text-sm text-red-600">My Republica</p>
+            <h3 class="text-2xl font-semibold leading-6">
+              Making Shivata’s Dreams Come True
+            </h3>
+            <p class="text-xs opacity-70 mt-2">
+              According to a press statement released by Shivata Love
+              Foundation, the event aimed at showcasing inner talent through the
+              art workshop and promoting Awadhi art, which still needs awareness
+              and promotion in comparison to Mithila art. Talking at the event,
+              Ragini shared, "We established the foundation to give life to my
+              daughter, Shivata's dream, who taught us love and left us at early
+              age of 20. And the foundation has been helping girls to gain
+              education through various scholarships provided by the
+              foundation."
+            </p>
+            <a
+              class="text-brand-600 text-xs mt-2 block"
+              href="https://myrepublica.nagariknetwork.com/news/making-shivata-s-dreams-come-true"
+              >https://myrepublica.nagariknetwork.com/news/making-shivata-s-dreams-come-true</a
+            >
+          </div>
+
+          <div
+            class="border border-gray-200 bg-white p-6 rounded flex flex-col gap-2"
+          >
+            <p class="text-sm text-red-600">Online Khabar</p>
+            <h3 class="text-2xl font-semibold leading-6">
+              Shivata-30: Art Exhibition Begins in Kathmandu
+            </h3>
+            <p class="text-xs opacity-70 mt-2">
+              Marking the 8th anniversary of the Shivata Love Foundation, the
+              art exhibition titled ‘Shivata 30’ officially opened on Tuesday at
+              the Nepal Art Council, Babermahal. The exhibition was inaugurated
+              by the foundation’s founder and chairperson, Rajani Upadhyay, who
+              is also Nepal’s first female vice-chancellor of the Nepal Academy
+              of Fine Arts.
+            </p>
+            <a
+              class="text-brand-600 text-xs mt-2 block"
+              href="https://english.onlinekhabar.com/shivata-30-art-exhibition-begins-in-kathmandu.html"
+              >https://english.onlinekhabar.com/shivata-30-art-exhibition-begins-in-kathmandu.html</a
+            >
+          </div>
+
+          <div
+            class="border border-gray-200 bg-white p-6 rounded flex flex-col gap-2"
+          >
+            <p class="text-sm text-red-600">Saransa</p>
+            <h3 class="text-2xl font-semibold leading-6">
+              Shivata Love Foundation Nepal continues social work for a better
+              society.
+            </h3>
+            <p class="text-xs opacity-70 mt-2">
+              The Shivata Love Foundation marked its 8th anniversary by opening
+              the 'Shivata 30' art exhibition in Nepal. Founded in memory of
+              Rajani Upadhyaya's late daughter, Shivata, the foundation aims to
+              support education for underprivileged children and contribute to
+              various social initiatives. The exhibition features works by
+              established and emerging Nepali artists, honoring Shivata's legacy
+              and inspiring youth.
+            </p>
+            <a
+              class="text-brand-600 text-xs mt-2 block"
+              href="https://saransa.deltadotai.com/api/article/135453"
+              >https://saransa.deltadotai.com/api/article/135453</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer class="bg-gradient-to-r from-[#150808] to-[#291010]" id="footer">
       <div class="max-w-7xl mx-auto px-4 pt-[200px] pb-[100px] relative">
@@ -84,12 +418,16 @@
           class="flex flex-nowrap items-center justify-center gap-6 text-white text-center"
         >
           <svg
-            class="w-6 h-6 rotate-180 text-brand-300 mt-[-10px]"
-            fill="currentColor"
-            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#fbcdcd"
+            viewBox="0 0 256 256"
+            class="rotate-180"
           >
-            <path d="..." />
-            <!-- Replace with actual Quotes icon path -->
+            <path
+              d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+            ></path>
           </svg>
           <h2
             class="font-bold font-['Oooh_Baby'] text-[2rem] lg:text-[3rem] text-white"
@@ -97,11 +435,15 @@
             Love is our Key to, prevent Humanity's collapse
           </h2>
           <svg
-            class="w-6 h-6 text-brand-300 mt-[-10px]"
-            fill="currentColor"
-            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#fbcdcd"
+            viewBox="0 0 256 256"
           >
-            <path d="..." />
+            <path
+              d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+            ></path>
           </svg>
         </div>
 
@@ -208,4 +550,6 @@
       </div>
     </footer>
   </body>
+  <script src="./script/navbar.js"></script>
+  <script src="./script/animations.js"></script>
 </html>

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html"],
+  content: ["./*.html", "./**/*.js"],
   theme: {
     extend: {
       colors: {
@@ -18,12 +18,16 @@ module.exports = {
         },
       },
       fontFamily: {
-        grotesk: ['"Host Grotesk"', "sans-serif"],
+        sans: ['"Host Grotesk"', "sans-serif"],
+        "oooh-baby": ['"Oooh Baby"', "cursive"],
       },
       maxWidth: {
         container: "1300px",
       },
+      fontSize: {
+        "3xl": ["32px", { lineHeight: "2rem" }],
+      },
     },
+    plugins: [],
   },
-  plugins: [],
 };

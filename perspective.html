@@ -4,79 +4,449 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./animations.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Oooh+Baby&display=swap"
+      rel="stylesheet"
+    />
     <title>Perspective</title>
   </head>
-  <body>
-    <nav class="w-full p-3 fixed backdrop-blur-md top-0 z-50">
+  <body class="bg-brand-50">
+    <nav
+      id="navbar"
+      class="w-full py-3 fixed backdrop-blur-md top-0 z-40 transition-all duration-300 text-black/80"
+    >
       <div
         class="max-w-container mx-auto flex justify-between items-center px-4"
       >
-        <p class="text-sm font-bold">
+        <p class="text-sm font-bold text-black/80" id="logo">
           SHIVATA LOVE <br />
           FOUDNATION
         </p>
 
-        <div class="flex gap-2">
+        <div class="gap-2 hidden lg:flex">
           <a
             href="/"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Home
           </a>
           <a
             href="/about.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             About
           </a>
           <a
             href="/team.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Team
           </a>
           <a
             href="/perspective.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200 text-brand-600"
+            id="active"
           >
             Perspective
           </a>
           <a
             href="/campaigns.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Campaigns
           </a>
           <a
             href="/beneficiaries.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Beneficiaries
           </a>
           <a
             href="/exposure.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Media Exposure
           </a>
         </div>
 
-        <div class="flex gap-2">
-          <a
-            href="#"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm"
-          >
+        <div class="gap-2 hidden lg:flex">
+          <a href="#footer" class="px-4 py-2 rounded-sm font-bold text-sm">
             Contact
           </a>
           <a
-            href="#"
-            class="px-4 py-2 text-white rounded-sm font-bold text-sm bg-brand-600 hover:bg-brand-700"
+            href="/donate.html"
+            class="px-4 py-2 rounded-sm font-bold text-sm bg-brand-600 hover:bg-brand-700 text-white"
           >
             Donate
           </a>
         </div>
+        <button
+          id="menu-toggle"
+          class="lg:hidden focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class=""
+          >
+            <path d="M4 12h16" />
+            <path d="M4 18h16" />
+            <path d="M4 6h16" />
+          </svg>
+        </button>
       </div>
     </nav>
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden fixed top-0 left-0 w-full h-full z-50 bg-black/50 lg:hidden"
+    >
+      <!-- Sidebar -->
+      <div
+        id="mobile-sidebar"
+        class="w-md h-full bg-white z-50 transform -translate-x-full transition-transform duration-300 ease-in-out"
+      >
+        <div class="p-4 flex flex-col gap-6 text-5xl font-semibold">
+          <div class="flex justify-between items-center">
+            <p class="text-base font-normal">Navigation</p>
+            <button id="menu-close" class="self-end text-black text-2xl">
+              ✕
+            </button>
+          </div>
+          <a href="/" class="hover:underline">Home</a>
+          <a href="/about.html" class="hover:underline">About</a>
+          <a href="/team.html" class="hover:underline">Team</a>
+          <a href="/perspective.html" class="hover:underline text-brand-600"
+            >Perspective</a
+          >
+          <a href="/campaigns.html" class="hover:underline">Campaigns</a>
+          <a href="/beneficiaries.html" class="hover:underline"
+            >Beneficiaries</a
+          >
+          <a href="/exposure.html" class="hover:underline">Media Exposure</a>
+        </div>
+      </div>
+
+      <!-- Transparent overlay -->
+      <div class="flex-1" id="overlay"></div>
+    </div>
+
+    <!-- Section 1: Header -->
+    <section class="fade-up">
+      <div class="max-w-container mx-auto pt-40 pb-16 lg:pt-40 lg:pb-40 px-4">
+        <!-- Title -->
+        <h1 class="text-5xl lg:text-8xl font-semibold">THE PERSPECTIVE</h1>
+
+        <!-- Breadcrumb + Short Description -->
+        <div class="grid grid-cols-12 mt-4">
+          <div class="col-span-12 lg:col-start-6 lg:col-span-2">
+            <p class="text-sm">HOME - PERSPECTIVE</p>
+          </div>
+          <div class="col-span-12 lg:col-span-3">
+            <p class="text-sm hidden lg:block">
+              Dedicated to making a positive and lasting impact on the lives of
+              individuals and communities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gradient-to-br from-brand-600 to-brand-700 fade-up">
+      <div class="max-w-container mx-auto py-24 lg:py-40 px-4">
+        <p class="text-sm text-gray-100 uppercase">
+          PERSPECTIVE I - <b>WOMEN EMPOWERMENT</b>
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-4">
+          <!-- Text Content -->
+          <div class="lg:col-span-7">
+            <!-- Large screen heading -->
+            <h2 class="text-3xl lg:text-5xl font-semibold text-gray-100 mt-2">
+              Committed to Uplifting Women and Creating a Future of Equality and
+              Opportunity.
+            </h2>
+
+            <hr class="opacity-30 my-10 border-gray-300" />
+
+            <p class="text-sm text-gray-100 leading-relaxed">
+              Empowering women is the key to creating stronger, more resilient
+              societies. By fostering education, economic independence, and
+              leadership opportunities, we enable women to drive meaningful
+              change in their communities.
+            </p>
+
+            <!-- Three Boxes -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10">
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold text-gray-100">01</p>
+                <p class="text-xl font-semibold text-gray-100">
+                  Empower Communities
+                </p>
+                <p class="text-sm text-gray-100 opacity-50">
+                  Strengthening communities by empowering women through
+                  education, skill development, and financial independence,
+                  ensuring a sustainable and inclusive future.
+                </p>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold text-gray-100">02</p>
+                <p class="text-xl font-semibold text-gray-100">Empower Women</p>
+                <p class="text-sm text-gray-100 opacity-50">
+                  Providing women with the tools, resources, and opportunities
+                  they need to break barriers, lead with confidence, and achieve
+                  economic and social independence.
+                </p>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold text-gray-100">03</p>
+                <p class="text-xl font-semibold text-gray-100">Awareness</p>
+                <p class="text-sm text-gray-100 opacity-50">
+                  Raising awareness on gender equality, women’s rights, and the
+                  importance of inclusivity, ensuring a more equitable society
+                  for future generations.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image Content -->
+          <div class="hidden lg:block lg:col-span-5 relative">
+            <img
+              src="/public/image/perspective_women.png"
+              alt="Women Empowerment"
+              class="h-[calc(100%+50px)] -mt-36 object-contain"
+            />
+            <img
+              src="/public/line.png"
+              alt="Line Graphic"
+              class="absolute top-10 left-0 h-[calc(100%+50px)] object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-brand-100 to-brand-200 fade-up">
+      <div class="max-w-container mx-auto py-40 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+          <div class="relative pt-[200px] lg:col-span-5">
+            <img
+              src="/public/image/student.png"
+              class="h-[calc(100%+50px)] -mt-[200px] object-contain justify-self-center"
+            />
+            <img
+              src="/public/line.png"
+              class="absolute top-40 w-[90%] h-[calc(100%+50px)] -mt-[200px] object-contain"
+            />
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-sm uppercase">
+              PERSPECTIVE II - <b>EDUCATION FOR ALL</b>
+            </p>
+            <h2 class="text-3xl lg:text-5xl font-semibold mt-2 hidden lg:block">
+              Committed to Providing Students & Underprivileged Childrens with
+              Access to Quality Education and Brighter Opportunities.
+            </h2>
+            <h2 class="text-2xl font-semibold mt-2 lg:hidden">
+              Committed to Providing Students & Underprivileged Childrens with
+              Access to Quality Education and Brighter Opportunities.
+            </h2>
+            <hr class="my-10 opacity-30" />
+            <p class="text-sm">
+              Empowering women is the key to creating stronger, more resilient
+              societies. By fostering education, economic independence, and
+              leadership opportunities, we enable women to drive meaningful
+              change in their communities.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10">
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold">01</p>
+                <p class="text-xl font-semibold">Scholarships</p>
+                <p class="text-sm opacity-50">
+                  Providing merit- and need-based scholarships to
+                  underprivileged children, ensuring they have the financial
+                  support to pursue quality education without barriers.
+                </p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold">02</p>
+                <p class="text-xl font-semibold">Opportunities</p>
+                <p class="text-sm opacity-50">
+                  Providing merit- and need-based scholarships to
+                  underprivileged children, ensuring they have the financial
+                  support to pursue quality education without barriers.
+                </p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold">03</p>
+                <p class="text-xl font-semibold">Collective Aid</p>
+                <p class="text-sm opacity-50">
+                  Offering financial, material, and academic support to ensure
+                  every child has the necessary tools—books, uniforms, and
+                  learning resources—to succeed in their education.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-brand-600 to-brand-700 fade-up">
+      <div class="max-w-container mx-auto py-40 px-4">
+        <p class="text-sm uppercase text-white">
+          PERSPECTIVE III - <b>ART & CULTURE</b>
+        </p>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div class="lg:col-span-7">
+            <h2
+              class="text-3xl lg:text-5xl font-semibold text-white mt-2 hidden lg:block"
+            >
+              Committed to Preserving Heritage, Promoting Creativity, and
+              Revitalizing Cultural Traditions.
+            </h2>
+            <h2 class="text-2xl font-semibold text-white mt-2 lg:hidden">
+              Committed to Preserving Heritage, Promoting Creativity, and
+              Revitalizing Cultural Traditions.
+            </h2>
+            <hr class="my-10 opacity-30" />
+            <p class="text-sm text-white">
+              Art and culture are the soul of a society, reflecting its history,
+              values, and identity. By supporting artistic expression, cultural
+              programs, and heritage conservation, we ensure that traditions
+              thrive for future generations.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10">
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold text-gray-100">01</p>
+                <p class="text-xl font-semibold text-gray-100">Prmotions</p>
+                <p class="text-sm text-gray-100 opacity-50">
+                  Encouraging artistic talent and cultural heritage through
+                  exhibitions, performances, and initiatives that celebrate
+                  diverse art forms and traditions.
+                </p>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold text-gray-100">02</p>
+                <p class="text-xl font-semibold text-gray-100">Opportunities</p>
+                <p class="text-sm text-gray-100 opacity-50">
+                  Creating platforms for artists, performers, and cultural
+                  practitioners to showcase their work, innovate, and connect
+                  with wider audiences.
+                </p>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold text-gray-100">03</p>
+                <p class="text-xl font-semibold text-gray-100">Reforms</p>
+                <p class="text-sm text-gray-100 opacity-50">
+                  Advocating for policies and initiatives that protect cultural
+                  heritage, support artistic growth, and integrate traditional
+                  art forms into modern society.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="relative lg:col-span-5 hidden lg:block">
+            <img
+              src="public/campaigns/mithilaart_2.jpg"
+              class="h-[calc(100%+50px)] -mt-[100px] object-contain"
+            />
+            <img
+              src="public/line.png"
+              class="absolute top-40 h-[calc(100%+50px)] -mt-[100px] object-contain"
+            />
+            <p class="text-xs text-white text-center mt-8">
+              Ragini Upadhyaya Mam
+            </p>
+            <p class="text-xs text-white text-center opacity-50">
+              Women Art Workshop with Padma Shree artist. 8th August 2024
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-brand-100 to-brand-200 fade-up">
+      <div class="max-w-container mx-auto py-40 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+          <div class="relative pt-[200px] lg:col-span-6">
+            <img
+              src="/public/image/health.png"
+              class="h-[calc(100%+50px)] -mt-[200px] object-contain justify-self-center"
+            />
+            <img
+              src="public/line.png"
+              class="absolute top-40 w-[90%] h-[calc(100%+50px)] -mt-[200px] object-contain"
+            />
+          </div>
+          <div class="lg:col-span-6">
+            <p class="text-sm uppercase">
+              PERSPECTIVE IV - <b>HEALTHCARE FOR ALL</b>
+            </p>
+            <h2 class="text-3xl lg:text-5xl font-semibold mt-2 hidden lg:block">
+              Committed to Enhancing Healthcare Access and Well-Being Across
+              Nepal.
+            </h2>
+            <h2 class="text-2xl font-semibold mt-2 lg:hidden">
+              Committed to Enhancing Healthcare Access and Well-Being Across
+              Nepal.
+            </h2>
+            <hr class="my-10 opacity-30" />
+            <p class="text-sm">
+              Quality healthcare is a fundamental right, not a privilege. By
+              providing medical aid, essential resources, and awareness
+              programs, we strive to improve health outcomes and ensure that
+              communities receive the care they deserve.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10">
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold">01</p>
+                <p class="text-xl font-semibold">Medical Aid</p>
+                <p class="text-sm opacity-50">
+                  Supporting hospitals and clinics with essential equipment,
+                  medicines, and financial aid to strengthen healthcare
+                  infrastructure in underserved areas.
+                </p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold">02</p>
+                <p class="text-xl font-semibold">Accessibility</p>
+                <p class="text-sm opacity-50">
+                  Providing financial assistance and healthcare support to
+                  individuals and families who lack access to proper medical
+                  care.
+                </p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="text-sm font-semibold">03</p>
+                <p class="text-xl font-semibold">Awareness</p>
+                <p class="text-sm opacity-50">
+                  Educating communities on preventive healthcare, disease
+                  management, and the importance of regular medical checkups for
+                  a healthier future.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer class="bg-gradient-to-r from-[#150808] to-[#291010]" id="footer">
       <div class="max-w-7xl mx-auto px-4 pt-[200px] pb-[100px] relative">
@@ -84,12 +454,16 @@
           class="flex flex-nowrap items-center justify-center gap-6 text-white text-center"
         >
           <svg
-            class="w-6 h-6 rotate-180 text-brand-300 mt-[-10px]"
-            fill="currentColor"
-            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#fbcdcd"
+            viewBox="0 0 256 256"
+            class="rotate-180"
           >
-            <path d="..." />
-            <!-- Replace with actual Quotes icon path -->
+            <path
+              d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+            ></path>
           </svg>
           <h2
             class="font-bold font-['Oooh_Baby'] text-[2rem] lg:text-[3rem] text-white"
@@ -97,11 +471,15 @@
             Love is our Key to, prevent Humanity's collapse
           </h2>
           <svg
-            class="w-6 h-6 text-brand-300 mt-[-10px]"
-            fill="currentColor"
-            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#fbcdcd"
+            viewBox="0 0 256 256"
           >
-            <path d="..." />
+            <path
+              d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+            ></path>
           </svg>
         </div>
 
@@ -208,4 +586,6 @@
       </div>
     </footer>
   </body>
+  <script src="./script/navbarWhite.js"></script>
+  <script src="./script/animations.js"></script>
 </html>

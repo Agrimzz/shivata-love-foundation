@@ -4,92 +4,678 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./animations.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Oooh+Baby&display=swap"
+      rel="stylesheet"
+    />
     <title>Campaigns</title>
   </head>
-  <body>
-    <nav class="w-full p-3 fixed backdrop-blur-md top-0 z-50">
+  <body class="bg-brand-50">
+   <nav
+      id="navbar"
+      class="w-full py-3 fixed backdrop-blur-md top-0 z-40 transition-all duration-300 text-white/60"
+    >
       <div
         class="max-w-container mx-auto flex justify-between items-center px-4"
       >
-        <p class="text-sm font-bold">
+        <p class="text-sm font-bold text-white" id="logo">
           SHIVATA LOVE <br />
           FOUDNATION
         </p>
 
-        <div class="flex gap-2">
+        <div class="gap-2 hidden lg:flex">
           <a
             href="/"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Home
           </a>
           <a
             href="/about.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             About
           </a>
           <a
             href="/team.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Team
           </a>
           <a
             href="/perspective.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Perspective
           </a>
           <a
             href="/campaigns.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200 text-white"
+            id="active"
           >
             Campaigns
           </a>
           <a
             href="/beneficiaries.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Beneficiaries
           </a>
           <a
             href="/exposure.html"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm hover:bg-brand-200"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
           >
             Media Exposure
           </a>
         </div>
 
-        <div class="flex gap-2">
-          <a
-            href="#"
-            class="px-4 py-2 text-gray-600 rounded-sm font-bold text-sm"
-          >
+        <div class="gap-2 hidden lg:flex">
+          <a href="#footer" class="px-4 py-2 rounded-sm font-bold text-sm">
             Contact
           </a>
           <a
-            href="#"
-            class="px-4 py-2 text-white rounded-sm font-bold text-sm bg-brand-600 hover:bg-brand-700"
+            href="/donate.html"
+            class="px-4 py-2 rounded-sm font-bold text-sm bg-brand-600 hover:bg-brand-700 text-white"
           >
             Donate
           </a>
         </div>
+        <button
+          id="menu-toggle"
+          class="lg:hidden focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class=""
+          >
+            <path d="M4 12h16" />
+            <path d="M4 18h16" />
+            <path d="M4 6h16" />
+          </svg>
+        </button>
       </div>
     </nav>
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden fixed top-0 left-0 w-full h-full z-50 bg-black/50 lg:hidden"
+    >
+      <!-- Sidebar -->
+      <div
+        id="mobile-sidebar"
+        class="w-md h-full bg-white z-50 transform -translate-x-full transition-transform duration-300 ease-in-out"
+      >
+        <div class="p-4 flex flex-col gap-6 text-5xl font-semibold">
+          <div class="flex justify-between items-center">
+            <p class="text-base font-normal">Navigation</p>
+            <button id="menu-close" class="self-end text-black text-2xl">
+              ✕
+            </button>
+          </div>
+          <a href="/" class="hover:underline">Home</a>
+          <a href="/about.html" class="hover:underline">About</a>
+          <a href="/team.html" class="hover:underline">Team</a>
+          <a href="/perspective.html" class="hover:underline">Perspective</a>
+          <a href="/campaigns.html" class="hover:underline text-brand-600">Campaigns</a>
+          <a href="/beneficiaries.html" class="hover:underline"
+            >Beneficiaries</a
+          >
+          <a href="/exposure.html" class="hover:underline">Media Exposure</a>
+        </div>
+      </div>
 
-    <footer class="bg-gradient-to-r from-[#150808] to-[#291010]" id="footer">
+      <!-- Transparent overlay -->
+      <div class="flex-1" id="overlay"></div>
+    </div>
+
+    <!-- Section 1: Header -->
+    <section class="bg-gradient-to-br from-[#E55454] to-[#7F2F2F] fade-up">
+      <div class="max-w-container mx-auto pt-40 pb-16 lg:pt-40 lg:pb-40 px-4">
+        <!-- Title -->
+        <h1 class="text-5xl lg:text-8xl font-semibold text-gray-100">
+          OUR CAMPAIGNS
+        </h1>
+
+        <!-- Breadcrumb + Short Description -->
+        <div class="grid grid-cols-12 mt-4">
+          <div class="col-span-12 lg:col-start-6 lg:col-span-2">
+            <p class="text-sm text-gray-100">HOME - CAMPAIGNS</p>
+          </div>
+          <div class="col-span-12 lg:col-span-3">
+            <p class="text-sm text-gray-100 hidden lg:block">
+              An overview of our campaigns in different sectors.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-24 fade-up">
+      <div class="max-w-container mx-auto px-4 space-y-4">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <h3 class="text-5xl lg:text-5xl font-semibold">
+            Women<br />Empowerment
+          </h3>
+          <p
+            class="text-sm lg:text-3xl font-semibold text-brand-600 opacity-50 text-right hidden lg:block"
+          >
+            Building a Future Where<br />Women Thrive with Equality,<br />Opportunity,
+            and Empowerment
+          </p>
+          <p class="text-sm font-semibold text-brand-600 opacity-50 lg:hidden">
+            Building a Future Where Women Thrive with Equality, Opportunity, and
+            Empowerment
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="my-2">
+            <img
+              src="/public/campaigns/mithilaexhibition.png"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                  Women's Empowerment Training Workshop & Exhibition Featuring
+                  Padma Shri Award-Winning Artist at Bhaktapur
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >Jan 01, 2025</span
+                  >
+                  <span class="text-xs"
+                    >Ragini Art Center, Bhaktapur, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-2">
+            <img
+              src="/public/campaigns/mithilaart.jpg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                  India-Nepal Cross-Border Mithila Art Exhibition Celebrating
+                  Women's Creative Leadership
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >August 16, 2024</span
+                  >
+                  <span class="text-xs"
+                    >Ragini Art Center, Bhaktapur, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-2">
+            <img
+              src="/public/image/mithikaworkshop.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                  Awadhi Folk Art Training Workshop Empowering Women Artists in
+                  Kapilvastu, Lumbini
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600">2020</span>
+                  <span class="text-xs"
+                    >Kapilvastu District, Lumbini Province, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-24 fade-up">
+      <div class="max-w-container mx-auto px-4 space-y-4">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <h3 class="text-5xl lg:text-5xl font-semibold">
+            Students<br />& Education
+          </h3>
+          <p
+            class="text-sm lg:text-3xl font-semibold text-brand-600 opacity-50 text-right hidden lg:block"
+          >
+            Building a Future Where<br />Education Unlocks Potential,<br />Dreams
+            Take Flight, and Communities <br />
+            Prosper
+          </p>
+          <p class="text-sm font-semibold text-brand-600 opacity-50 lg:hidden">
+            Building a Future Where Education Unlocks Potential, Dreams Take
+            Flight, and Communities Prosper
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="my-2">
+            <img
+              src="/public/campaigns/khokana.jpg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                  Educational Resource Donation for Handicapped Students at
+                  Khokana Special Needs School
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >January 1, 2025
+                  </span>
+                  <span class="text-xs"></span>
+                    Khokana, Lalitpur District, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-2">
+            <img
+              src="/public/campaigns/patandonation.jpg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                  Christmas Art Supply Drive for Children's Ward Patients at Patan Hospital
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >December 24, 2024</span
+                  >
+                  <span class="text-xs"
+                    >Patan Hospital, Lalitpur District, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-2">
+            <img
+              src="/public/campaigns/scholarshipChina.jpg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                 Scholarship Awards for Nepali Students Pursuing Design Education at Suzhou Art and Design Technology Institute, Suzhou , China.
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600">2019</span>
+                  <span class="text-xs"
+                    >Suzhou Art and Design Technology Institute, Suzhou , China.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+           <div class="my-2">
+            <img
+              src="/public/campaigns/chila_slfn.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                 SLFN-Funded Scholarships for Higher Educational Advancement in China
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600">2025</span>
+                  <span class="text-xs"
+                    >Nepal Art Council, Babar Mahal, Kathmandu, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+           <div class="my-2">
+            <img
+              src="/public/campaigns/literacy_morang.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+              Comprehensive Scholarship Support for Underprivileged Children in Rural Morang Schools
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600">October 12, 2023</span>
+                  <span class="text-xs"
+                    >Morang District, Province 1, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+           <div class="my-2">
+            <img
+              src="/public/campaigns/child_chepan.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                 Meningitis Health Awareness Campaign Targeting Chepang Community Children at Chitwan
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600">2018</span>
+                  <span class="text-xs"
+                    >Chitwan District, Narayani Province, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <section class="py-16 lg:py-24 fade-up">
+      <div class="max-w-container mx-auto px-4 space-y-4">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <h3 class="text-5xl lg:text-5xl font-semibold">
+            Child<br />Empowerment
+          </h3>
+          <p
+            class="text-sm lg:text-3xl font-semibold text-brand-600 opacity-50 text-right hidden lg:block"
+          >
+            Building a Future Where<br />Children Grow with Confidence,<br />Opportunity, and Endless Possibilities
+          </p>
+          <p class="text-sm font-semibold text-brand-600 opacity-50 lg:hidden">
+            Building a Future Where Children Grow with Confidence,Opportunity, and Endless Possibilities
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="my-2">
+            <img
+              src="/public/campaigns/child_bhaktapur.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                 Art and Education Initiative to Empower Underprivileged Children in Bhaktapur
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >2017</span
+                  >
+                  <span class="text-xs"
+                    >Bhaktapur, Kathmandu Valley, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-2">
+            <img
+              src="/public/campaigns/child_bhaktapur2.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                 School Upgrades and Learning Environment Enhancements for Future Generations
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >2017</span
+                  >
+                  <span class="text-xs"
+                    >Bhaktapur, Kathmandu Valley, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </section>
+
+     <section class="py-16 lg:py-24 fade-up">
+      <div class="max-w-container mx-auto px-4 space-y-4">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <h3 class="text-5xl lg:text-5xl font-semibold">
+            Disaster<br />Relief
+          </h3>
+          <p
+            class="text-sm lg:text-3xl font-semibold text-brand-600 opacity-50 text-right hidden lg:block"
+          >
+            Building a Future Where<br />Communities Rise Stronger,<br />Safer, and More Resilient
+          </p>
+          <p class="text-sm font-semibold text-brand-600 opacity-50 lg:hidden">
+            Building a Future Where Communities Rise Stronger, Safer, and More Resilient
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="my-2">
+            <img
+              src="/public/campaigns/disaster_corona.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                 Food Relief Mission for Pawitra Samaj Orphanage During COVID-19 Emergency in Budhanilkantha
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >2020</span
+                  >
+                  <span class="text-xs"
+                    >Budhanilkantha-4, Kathmandu District, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-2">
+            <img
+              src="/public/campaigns/covidrelief.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                 COVID-19 Relief Distribution for Women and Families in Motherland Women Society, Kathmandu
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >2021</span
+                  >
+                  <span class="text-xs"
+                    >Kathmandu Metropolitan City, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-2">
+            <img
+              src="/public/campaigns/floodrelief.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                 Emergency Flood Response and Relief Supplies Distribution in Chitwan District
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >2017</span
+                  >
+                  <span class="text-xs"
+                    >Chitwan District, Narayani Province, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          
+        </div>
+      </div>
+    </section>
+
+      <section class="py-16 lg:py-24 fade-up">
+      <div class="max-w-container mx-auto px-4 space-y-4">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <h3 class="text-5xl lg:text-5xl font-semibold">
+            Art &<br />Culture
+          </h3>
+          <p
+            class="text-sm lg:text-3xl font-semibold text-brand-600 opacity-50 text-right hidden lg:block"
+          >
+            Building a Future Where<br />Creativity Flourishes,<br />Heritage Lives On, and Stories Inspire
+          </p>
+          <p class="text-sm font-semibold text-brand-600 opacity-50 lg:hidden">
+            Building a Future Where Creativity Flourishes, Heritage Lives On, and Stories Inspire
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="my-2">
+            <img
+              src="/public/campaigns/awadhiart.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+              Awadhi Folk Art Promotion and Traditional Cultural Preservation Initiative in Kapilvastu
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >2019</span
+                  >
+                  <span class="text-xs"
+                    >Kapilvastu District, Lumbini Province, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-2">
+            <img
+              src="/public/campaigns/shivata30.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+               Shivata-30: A Cultural Movement to Encourage and Uplift Young Nepali Artists
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >2025</span
+                  >
+                  <span class="text-xs"
+                    >Nepal Art Council, Babar Mahal, Kathmandu, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-2">
+            <img
+              src="/public/campaigns/awadhiwomen.jpeg"
+              alt="Campaign"
+              class="w-full h-[400px] lg:h-[600px] object-cover rounded-xl"
+            />
+            <div class="grid mt-4">
+              <div class="lg:col-span-8">
+                <h4 class="text-xl font-semibold lg:w-[70%] w-full">
+                 EAwadhi Folk Art Training and Women-Led Cultural Revival Program in Kapilvastu, Lumbini
+                </h4>
+                <div class="flex gap-4 mt-2">
+                  <span class="text-xs font-semibold text-brand-600"
+                    >2019</span
+                  >
+                  <span class="text-xs"
+                    >Kapilvastu District, Lumbini Province, Nepal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          
+        </div>
+      </div>
+    </section>
+
+     <footer class="bg-gradient-to-r from-[#150808] to-[#291010]" id="footer">
       <div class="max-w-7xl mx-auto px-4 pt-[200px] pb-[100px] relative">
         <div
           class="flex flex-nowrap items-center justify-center gap-6 text-white text-center"
         >
           <svg
-            class="w-6 h-6 rotate-180 text-brand-300 mt-[-10px]"
-            fill="currentColor"
-            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#fbcdcd"
+            viewBox="0 0 256 256"
+            class="rotate-180"
           >
-            <path d="..." />
-            <!-- Replace with actual Quotes icon path -->
+            <path
+              d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+            ></path>
           </svg>
           <h2
             class="font-bold font-['Oooh_Baby'] text-[2rem] lg:text-[3rem] text-white"
@@ -97,11 +683,15 @@
             Love is our Key to, prevent Humanity's collapse
           </h2>
           <svg
-            class="w-6 h-6 text-brand-300 mt-[-10px]"
-            fill="currentColor"
-            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#fbcdcd"
+            viewBox="0 0 256 256"
           >
-            <path d="..." />
+            <path
+              d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+            ></path>
           </svg>
         </div>
 
@@ -208,4 +798,6 @@
       </div>
     </footer>
   </body>
+  <script src="./script/navbar.js"></script>
+  <script src="./script/animations.js"></script>
 </html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./animations.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Oooh+Baby&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Donate</title>
+  </head>
+  <body class="bg-brand-50">
+    <nav
+      id="navbar"
+      class="w-full py-3 fixed backdrop-blur-md top-0 z-40 transition-all duration-300 text-white/60"
+    >
+      <div
+        class="max-w-container mx-auto flex justify-between items-center px-4"
+      >
+        <p class="text-sm font-bold text-white" id="logo">
+          SHIVATA LOVE <br />
+          FOUDNATION
+        </p>
+
+        <div class="gap-2 hidden lg:flex">
+          <a
+            href="/"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
+          >
+            Home
+          </a>
+          <a
+            href="/about.html"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
+          >
+            About
+          </a>
+          <a
+            href="/team.html"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
+          >
+            Team
+          </a>
+          <a
+            href="/perspective.html"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
+          >
+            Perspective
+          </a>
+          <a
+            href="/campaigns.html"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
+          >
+            Campaigns
+          </a>
+          <a
+            href="/beneficiaries.html"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
+          >
+            Beneficiaries
+          </a>
+          <a
+            href="/exposure.html"
+            class="px-4 py-2 rounded-sm font-bold text-sm hover:bg-brand-200"
+          >
+            Media Exposure
+          </a>
+        </div>
+
+        <div class="gap-2 hidden lg:flex">
+          <a href="#footer" class="px-4 py-2 rounded-sm font-bold text-sm">
+            Contact
+          </a>
+          <a
+            href="/donate.html"
+            class="px-4 py-2 rounded-sm font-bold text-sm bg-brand-600 hover:bg-brand-700 text-white"
+          >
+            Donate
+          </a>
+        </div>
+        <button
+          id="menu-toggle"
+          class="lg:hidden focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class=""
+          >
+            <path d="M4 12h16" />
+            <path d="M4 18h16" />
+            <path d="M4 6h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden fixed top-0 left-0 w-full h-full z-50 bg-black/50 lg:hidden"
+    >
+      <!-- Sidebar -->
+      <div
+        id="mobile-sidebar"
+        class="w-md h-full bg-white z-50 transform -translate-x-full transition-transform duration-300 ease-in-out"
+      >
+        <div class="p-4 flex flex-col gap-6 text-5xl font-semibold">
+          <div class="flex justify-between items-center">
+            <p class="text-base font-normal">Navigation</p>
+            <button id="menu-close" class="self-end text-black text-2xl">
+              ✕
+            </button>
+          </div>
+          <a href="/" class="hover:underline">Home</a>
+          <a href="/about.html" class="hover:underline">About</a>
+          <a href="/team.html" class="hover:underline">Team</a>
+          <a href="/perspective.html" class="hover:underline">Perspective</a>
+          <a href="/campaigns.html" class="hover:underline">Campaigns</a>
+          <a href="/beneficiaries.html" class="hover:underline"
+            >Beneficiaries</a
+          >
+          <a href="/exposure.html" class="hover:underline">Media Exposure</a>
+        </div>
+      </div>
+
+      <!-- Transparent overlay -->
+      <div class="flex-1" id="overlay"></div>
+    </div>
+
+    <!-- Section 1: Header -->
+    <section class="bg-gradient-to-br from-[#E55454] to-[#7F2F2F] fade-up">
+      <div
+        class="max-w-container mx-auto pt-40 pb-16 lg:pt-40 lg:pb-40 px-4 relative"
+      >
+        <!-- Title -->
+        <h1 class="text-3xl lg:text-8xl font-semibold text-gray-100">
+          DONATIONS
+        </h1>
+
+        <!-- Breadcrumb + Short Description -->
+        <div class="grid grid-cols-12 mt-4">
+          <div class="col-span-12 lg:col-start-6 lg:col-span-2">
+            <p class="text-sm text-gray-100">HOME - DONATIONS</p>
+          </div>
+          <div class="col-span-12 lg:col-span-3">
+            <p class="text-sm text-gray-100 hidden lg:block">
+              Dedicated to making a positive and lasting impact on the lives of
+              individuals and communities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Donation Info Section -->
+    <section class="fade-up">
+      <div class="max-w-container mx-auto px-4 py-[100px]">
+        <!-- Support Our Cause -->
+        <div class="mb-16 mx-auto">
+          <p class="text-brand-600 text-md font-semibold mb-6">
+            Support Our Cause
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            <h2 class="text-2xl font-bold lg:text-5xl">
+              We will provide you a “Certificate of Donation” for every
+              successful donation.
+            </h2>
+            <p class="text-base leading-relaxed">
+              Your donation to Shivata Love Foundation Nepal multiplies into
+              women's empowerment programs, children's education initiatives,
+              cultural preservation projects, and vital healthcare services.
+              Each contribution helps us create a brighter, more equitable
+              future across Nepal's communities. Join us in making meaningful
+              change possible.
+            </p>
+          </div>
+        </div>
+
+        <!-- Donation Address Title -->
+        <h2
+          class="text-2xl lg:text-4xl font-bold text-gray-900 opacity-20 mb-16"
+        >
+          Donation Address
+        </h2>
+
+        <!-- Bank Details and QR -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-container mx-auto px-4"
+        >
+          <!-- Bank Info -->
+          <div>
+            <h3 class="text-3xl font-bold mb-8">Sanima Bank</h3>
+            <div class="space-y-2">
+              <div class="flex">
+                <span class="w-[150px] font-semibold text-lg"
+                  >Account Name</span
+                >
+                <span class="text-lg font-semibold"
+                  >: Shivata Love Foundation Nepal</span
+                >
+              </div>
+              <div class="flex">
+                <span class="w-[150px] font-semibold text-lg"
+                  >Account Number</span
+                >
+                <span class="text-lg font-semibold">: 076010010000413</span>
+              </div>
+              <div class="flex">
+                <span class="w-[150px] font-semibold text-lg"
+                  >Bank Details</span
+                >
+                <span class="text-lg font-semibold"
+                  >: Sanima Bank Limited, Gatthaghar Branch, Nepal</span
+                >
+              </div>
+              <div class="flex">
+                <span class="w-[150px] font-semibold text-lg">BIC/SWIFT</span>
+                <span class="text-lg font-semibold">: SNMANPKA</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- QR Code -->
+          <div class="flex justify-end">
+            <div class="border border-gray-300 p-4 shadow-md bg-white">
+              <img
+                src="/public/image/nicQR.png"
+                alt="Donation QR Code"
+                class="w-[300px] object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gradient-to-r from-[#150808] to-[#291010]" id="footer">
+      <div class="max-w-7xl mx-auto px-4 pt-[200px] pb-[100px] relative">
+        <div
+          class="flex flex-nowrap items-center justify-center gap-6 text-white text-center"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#fbcdcd"
+            viewBox="0 0 256 256"
+            class="rotate-180"
+          >
+            <path
+              d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+            ></path>
+          </svg>
+          <h2
+            class="font-bold font-['Oooh_Baby'] text-[2rem] lg:text-[3rem] text-white"
+          >
+            Love is our Key to, prevent Humanity's collapse
+          </h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#fbcdcd"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M116,72v88a48.05,48.05,0,0,1-48,48,8,8,0,0,1,0-16,32,32,0,0,0,32-32v-8H40a16,16,0,0,1-16-16V72A16,16,0,0,1,40,56h60A16,16,0,0,1,116,72ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Z"
+            ></path>
+          </svg>
+        </div>
+
+        <p class="text-white text-center mt-4 opacity-60">
+          Shivata Upadhyaya Grela
+        </p>
+
+        <hr class="mt-24 border-white/10" />
+        <div class="h-24"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Contact Section -->
+          <div>
+            <div class="grid grid-cols-2 gap-8 text-white">
+              <div>
+                <p class="opacity-50">Building</p>
+                <p class="mt-1">Shivata Love Foundation Branch Office</p>
+                <p class="mt-8">
+                  Ragini Art Center Building<br />Balkot, Bhaktapur, Nepal
+                </p>
+              </div>
+              <div>
+                <p class="opacity-50">Parking Location</p>
+                <p class="mt-1">
+                  Parking available in Ragini Art Center Premises.
+                </p>
+              </div>
+              <div>
+                <p class="opacity-50">Phone</p>
+                <p class="mt-1">01-6630335</p>
+              </div>
+              <div>
+                <p class="opacity-50">Email</p>
+                <p class="mt-1 hidden lg:block">
+                  shivatalovefoundation16@gmail.com
+                </p>
+                <p class="mt-1 lg:hidden">
+                  info@shivata-love.org<br />shivatalovefoundation16<br />@gmail.com
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Links -->
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 text-white">
+            <div>
+              <p class="text-xs opacity-50">About</p>
+              <ul class="mt-2 space-y-1 text-sm">
+                <li><a href="/" class="hover:underline">Home</a></li>
+                <li><a href="/about" class="hover:underline">About</a></li>
+                <li><a href="/team" class="hover:underline">Team</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="text-xs opacity-50">Vision & Works</p>
+              <ul class="mt-2 space-y-1 text-sm">
+                <li>
+                  <a href="/campaigns" class="hover:underline">Campaigns</a>
+                </li>
+                <li>
+                  <a href="/perspective" class="hover:underline">Perspective</a>
+                </li>
+                <li>
+                  <a href="/beneficiaries" class="hover:underline"
+                    >Beneficiaries</a
+                  >
+                </li>
+                <li>
+                  <a href="/exposure" class="hover:underline">Media Exposure</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p class="text-xs opacity-50">Socials</p>
+              <ul class="mt-2 space-y-1 text-sm">
+                <li>
+                  <a
+                    href="https://www.facebook.com/shivata.love/"
+                    target="_blank"
+                    class="hover:underline"
+                    >Facebook</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/shivatalovefoundation16"
+                    target="_blank"
+                    class="hover:underline"
+                    >Instagram</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <hr class="mt-40 mb-8 border-white/10" />
+        <div
+          class="flex flex-col lg:flex-row justify-between text-xs text-white"
+        >
+          <p>Powered by vStudio.co</p>
+          <p>All data & copyright under Shivata Love Foundation @ 2025</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="./script/navbar.js"></script>
+  <script src="./script/animations.js"></script>
+</html>
